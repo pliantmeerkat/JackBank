@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JackBank.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,7 +11,11 @@ namespace JackBank.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            using (var context = new UserContext())
+            {
+                var users = context.Users.ToArray();
+            }
+                return View();
         }
 
         public ActionResult About()
